@@ -77,7 +77,11 @@ Reviewed 2026-11-12 by an independent adversarial pass: no critical or high find
 **Messages are public and permanent.** They are copied from calldata into events and nothing else; they cannot
 change who is paid or how much. Still no owner, no fee, no pause, no upgrade, no rescue, no storage, nothing payable.
 
-Gas with real USDG: 33,656 per fresh-balance recipient with no memo (v1: 33,661), 39,689 with a 140-byte memo each.
+Gas, from the live node's own estimate with real USDG and 250 fresh-balance recipients: about 8.54M with no memo
+(34,100 each, the same as v1), 8.55M with a 280-byte payout memo, 10.6M with a 140-byte memo for every recipient
+(42,500 each), against the chain's 32M per-transaction limit. The numbers the tests print are execution only and
+vary with the forge version (33,656 and 39,689 per recipient on forge 1.5; higher on 1.8), which is why the tests
+assert loose bounds and the absolute limit rather than exact figures.
 The spec, the decisions behind it and the measured numbers are in the app repository at `docs/DISPERSE-V2.md`.
 
 ## Tokens on Robinhood Chain (checked on a fork, 2026-11-11)
